@@ -10,19 +10,31 @@ const User = {
       email: email,
       linkImg: linkImg,
       prezzo: prezzo,
-      quantitaMagazzino: quantitaMagazzino
+      quantitaMagazzino: Number(quantitaMagazzino)
     };
 
     users.push(newUser);
     return newUser;
   },
 
-  findById: (id) => {
-    return users.find(u => u.id === parseInt(id));
+  delete: (id) => {
+    users = users.filter(user => user.id !== Number(id));
   },
 
-  delete: (id) => {
-    users = users.filter(u => u.id !== parseInt(id));
+  vendi: (id) => {
+    const user = users.find(user => user.id === Number(id));
+
+    if (user && user.quantitaMagazzino > 0) {
+      user.quantitaMagazzino--;
+    }
+  },
+
+  compra: (id) => {
+    const user = users.find(user => user.id === Number(id));
+
+    if (user) {
+      user.quantitaMagazzino++;
+    }
   }
 };
 

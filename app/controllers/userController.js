@@ -24,3 +24,19 @@ exports.deleteUser = (req, res) => {
 
   res.redirect('/users');
 };
+
+exports.vendiUser = (req, res) => {
+  const { id } = req.params;
+
+  User.vendi(id);
+
+  res.redirect('/users');
+};
+
+exports.compraUser = (req, res) => {
+  const { id } = req.params;
+
+  User.compra(id);
+
+  res.redirect('/users');
+};

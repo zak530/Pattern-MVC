@@ -19,7 +19,16 @@
   <ul>
     <% users.forEach(user => { %>
       <li>
-        <%= user.name %> - <%= user.email %> - <img src="<%= user.linkImg %>" width="125"> - <%= user.prezzo %> € - <%= user.quantitaMagazzino %>
+        <%= user.name %> - <%= user.email %> - <img src="<%= user.linkImg %>" width="125"> - <%= user.prezzo %>  - Quantità: <%= user.quantitaMagazzino %>
+
+        <form action="/users/vendi/<%= user.id %>" method="POST" style="display:inline;">
+          <button type="submit">Vendi</button>
+        </form>
+
+        <form action="/users/compra/<%= user.id %>" method="POST" style="display:inline;">
+          <button type="submit">Compra</button>
+        </form>
+
         <form action="/users/delete/<%= user.id %>" method="POST" style="display:inline;">
           <button type="submit">Elimina</button>
         </form>
