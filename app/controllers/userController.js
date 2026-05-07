@@ -40,3 +40,8 @@ exports.compraUser = (req, res) => {
 
   res.redirect('/users');
 };
+
+exports.scortaUser = (req, res) => {
+  const users = User.findAll();
+  res.render('users', { users });
+};

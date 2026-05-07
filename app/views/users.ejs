@@ -28,10 +28,15 @@
         <form action="/users/compra/<%= user.id %>" method="POST" style="display:inline;">
           <button type="submit">Compra</button>
         </form>
-
+ 
+        <form action="/users/scorta/" method="POST" style="display:inline;">
+          <button type="submit">Scorta</button>
+        </form>
         <form action="/users/delete/<%= user.id %>" method="POST" style="display:inline;">
           <button type="submit">Elimina</button>
         </form>
+       
+
       </li>
     <% }) %>
   </ul>

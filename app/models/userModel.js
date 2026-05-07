@@ -35,6 +35,9 @@ const User = {
     if (user) {
       user.quantitaMagazzino++;
     }
+  },
+ scorta: () => {
+    users = users.filter(user => user.quantitaMagazzino < 5);
   }
 };
 
