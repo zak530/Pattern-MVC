@@ -1,28 +1,36 @@
-let users = [];
+const users = new Map();
 
 const User = {
-  findAll: () => users,
+
+  findAll: () => {
+    return users.values();
+  },
 
   create: (name, email, linkImg, prezzo, quantitaMagazzino) => {
+
+    const id = Date.now();
+
     const newUser = {
-      id: Date.now(),
+      id: id,
       name: name,
       email: email,
       linkImg: linkImg,
       prezzo: prezzo,
       quantitaMagazzino: Number(quantitaMagazzino)
-    };
+    };  
 
-    users.push(newUser);
+    users.set(id, newUser);
+
     return newUser;
   },
 
   delete: (id) => {
-    users = users.filter(user => user.id !== Number(id));
+    users.delete(Number(id));
   },
 
   vendi: (id) => {
-    const user = users.find(user => user.id === Number(id));
+
+    const user = users.get(Number(id));
 
     if (user && user.quantitaMagazzino > 0) {
       user.quantitaMagazzino--;
@@ -30,15 +38,13 @@ const User = {
   },
 
   compra: (id) => {
-    const user = users.find(user => user.id === Number(id));
+
+    const user = users.get(Number(id));
 
     if (user) {
       user.quantitaMagazzino++;
     }
   },
- scorta: () => {
-    users = users.filter(user => user.quantitaMagazzino < 5);
-  }
 };
 
 module.exports = User;
